@@ -4,15 +4,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C5C4C4"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/patrick_hand_sc"
+        android:text="Dead of Winter"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/player1box"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/playersection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/p1title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 1"
+        app:layout_constraintStart_toStartOf="@+id/player1box"
+        app:layout_constraintTop_toTopOf="@id/player1box" />
+
+    <TextView
+        android:id="@+id/p1dice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/p1title"
+        app:layout_constraintTop_toTopOf="@+id/player1box" />
+
+    <Button
+        android:id="@+id/btnp1minus"
+        android:layout_width="39dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#C63E3E"
+        android:text="-"
+        android:tag="p1"
+        android:onClick="subtractClick"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/player1box"
+        app:layout_constraintTop_toTopOf="@+id/player1box" />
+
+    <Button
+        android:id="@+id/btnp1plus"
+        android:layout_width="39dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#104943"
+        android:text="+"
+        android:tag="p1"
+        android:onClick="addClick"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/btnp1minus"
+        app:layout_constraintTop_toTopOf="@+id/player1box" />
+
+    <Button
+        android:id="@+id/p1roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="ROLL"
+        android:tag="p1"
+        android:onClick="rollDice"
+        app:layout_constraintStart_toEndOf="@+id/btnp1plus"
+        app:layout_constraintTop_toTopOf="@+id/player1box" />
+
+    <TextView
+        android:id="@+id/p1results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/player1box"
+        app:layout_constraintStart_toEndOf="@+id/p1roll"
+        app:layout_constraintTop_toTopOf="@+id/player1box" />
+
+    <View
+        android:id="@+id/player2box"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/playersection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1box" />
+
+    <TextView
+        android:id="@+id/p2title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 2"
+        app:layout_constraintStart_toStartOf="@+id/player2box"
+        app:layout_constraintTop_toTopOf="@id/player2box" />
+
+    <TextView
+        android:id="@+id/p2dice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/p2title"
+        app:layout_constraintTop_toTopOf="@+id/player2box" />
+
+    <Button
+        android:id="@+id/btnp2minus"
+        android:layout_width="39dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#C63E3E"
+        android:text="-"
+        android:tag="p2"
+        android:onClick="subtractClick"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/player2box"
+        app:layout_constraintTop_toTopOf="@+id/player2box" />
+
+    <Button
+        android:id="@+id/btnp2plus"
+        android:layout_width="39dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#104943"
+        android:text="+"
+        android:tag="p2"
+        android:onClick="addClick"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/btnp2minus"
+        app:layout_constraintTop_toTopOf="@+id/player2box" />
+
+    <Button
+        android:id="@+id/p2roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="ROLL"
+        android:tag="p2"
+        android:onClick="rollDice"
+        app:layout_constraintStart_toEndOf="@+id/btnp2plus"
+        app:layout_constraintTop_toTopOf="@+id/player2box" />
+
+    <TextView
+        android:id="@+id/p2results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/player2box"
+        app:layout_constraintStart_toEndOf="@+id/p2roll"
+        app:layout_constraintTop_toTopOf="@+id/player2box" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.stuartyee.deadofwintergameaid'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.stuartyee.deadofwintergameaid"

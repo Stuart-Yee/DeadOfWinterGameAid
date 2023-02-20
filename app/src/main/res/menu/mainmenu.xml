@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/exposure"
+        android:title="Exposure Die"
+        android:icon="@color/cardview_dark_background"
+        />
+</menu>
