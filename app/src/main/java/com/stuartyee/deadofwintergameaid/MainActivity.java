@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         playerList.add(new Player("Player 1"));
         playerList.add(new Player("Player 2"));
         playerList.add(new Player("Player 3"));
+        playerList.add(new Player("Player 4"));
+        playerList.add(new Player("Player 5"));
 
         // 3- Adapter
         playerListAdapter = new PlayerListAdapter(playerList, getApplicationContext());
