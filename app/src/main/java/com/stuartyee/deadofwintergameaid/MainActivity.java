@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.stuartyee.deadofwintergameaid.utilities.DiceRoller;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -103,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
             default: text = null; resultsText = null;
         }
         Integer dice = parseInt(text.getText().toString());
-        int[] results = new int[dice];
-        for (int i=0; i < dice; i++) {
-            Random rand = new Random();
-            int die = rand.nextInt(6);
-            results[i] = die+1;
-        }
+        int[] results = DiceRoller.rollDice(dice);
+//        for (int i=0; i < dice; i++) {
+//            Random rand = new Random();
+//            int die = rand.nextInt(6);
+//            results[i] = die+1;
+//        }
         Arrays.sort(results);
         String resultsStr = "";
         for (Integer die : results) {
