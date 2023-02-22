@@ -10,32 +10,40 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.stuartyee.deadofwintergameaid.models.Player;
 import com.stuartyee.deadofwintergameaid.utilities.DiceRoller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView player1Dice;
-    TextView p1Results;
-    TextView player2Dice;
-    TextView p2Results;
+    ListView playersListView;
+    private static PlayerListAdapter playerListAdapter;
+    ArrayList<Player> playerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        player1Dice = findViewById(R.id.p1dice);
-        p1Results = findViewById(R.id.p1results);
-        player2Dice = findViewById(R.id.p2dice);
-        p2Results = findViewById(R.id.p2results);
-        player1Dice.setText("4");
-        player2Dice.setText("4");
-        System.out.println("App up!");
+
+        // 1- AdapterView: a listView
+        playersListView = findViewById(R.id.listview);
+
+        // 2- Data source
+        playerList = new ArrayList<>();
+        playerList.add(new Player("Player 1"));
+        playerList.add(new Player("Player 2"));
+        playerList.add(new Player("Player 3"));
+
+        // 3- Adapter
+        playerListAdapter = new PlayerListAdapter(playerList, getApplicationContext());
+        playersListView.setAdapter(playerListAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,70 +64,70 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void subtractClick(View view){
-        Button button = (Button) view;
-        String tag = button.getTag().toString();
-        String operation = "subtract";
-        switch (tag) {
-            case "p1": changeDice(player1Dice, operation);
-            break;
-            case "p2": changeDice(player2Dice, operation);
-            default:
-                return;
-        }
-    }
-
-    public void addClick(View view){
-        Button button = (Button) view;
-        String tag = button.getTag().toString();
-        String operation = "add";
-        switch (tag) {
-            case "p1": changeDice(player1Dice, operation);
-                break;
-            case "p2": changeDice(player2Dice, operation);
-            default:
-                return;
-        }
-    }
-
-    public void changeDice(TextView text, String operation) {
-        Integer dice = parseInt(text.getText().toString());
-        if (operation == "subtract" && dice >= 1) {
-            dice--;
-        } else if (operation == "add") {
-            dice++;
-        }
-        text.setText(dice.toString());
-    }
-
-    public int[] rollDice(View view) {
-        Button button = (Button) view;
-        String tag = button.getTag().toString();
-        TextView text;
-        TextView resultsText;
-        switch (tag) {
-            case "p1": text = player1Dice; resultsText = p1Results;
-            break;
-            case "p2": text = player2Dice; resultsText = p2Results;
-            break;
-            default: text = null; resultsText = null;
-        }
-        Integer dice = parseInt(text.getText().toString());
-        int[] results = DiceRoller.rollDice(dice);
-//        for (int i=0; i < dice; i++) {
-//            Random rand = new Random();
-//            int die = rand.nextInt(6);
-//            results[i] = die+1;
+//    public void subtractClick(View view){
+//        Button button = (Button) view;
+//        String tag = button.getTag().toString();
+//        String operation = "subtract";
+//        switch (tag) {
+//            case "p1": changeDice(player1Dice, operation);
+//            break;
+//            case "p2": changeDice(player2Dice, operation);
+//            default:
+//                return;
 //        }
-        Arrays.sort(results);
-        String resultsStr = "";
-        for (Integer die : results) {
-            resultsStr += die.toString() +" ";
-        }
-        resultsText.setText(resultsStr);
-
-        return results;
-    }
+//    }
+//
+//    public void addClick(View view){
+//        Button button = (Button) view;
+//        String tag = button.getTag().toString();
+//        String operation = "add";
+//        switch (tag) {
+//            case "p1": changeDice(player1Dice, operation);
+//                break;
+//            case "p2": changeDice(player2Dice, operation);
+//            default:
+//                return;
+//        }
+//    }
+//
+//    public void changeDice(TextView text, String operation) {
+//        Integer dice = parseInt(text.getText().toString());
+//        if (operation == "subtract" && dice >= 1) {
+//            dice--;
+//        } else if (operation == "add") {
+//            dice++;
+//        }
+//        text.setText(dice.toString());
+//    }
+//
+//    public int[] rollDice(View view) {
+//        Button button = (Button) view;
+//        String tag = button.getTag().toString();
+//        TextView text;
+//        TextView resultsText;
+//        switch (tag) {
+//            case "p1": text = player1Dice; resultsText = p1Results;
+//            break;
+//            case "p2": text = player2Dice; resultsText = p2Results;
+//            break;
+//            default: text = null; resultsText = null;
+//        }
+//        Integer dice = parseInt(text.getText().toString());
+//        int[] results = DiceRoller.rollDice(dice);
+////        for (int i=0; i < dice; i++) {
+////            Random rand = new Random();
+////            int die = rand.nextInt(6);
+////            results[i] = die+1;
+////        }
+//        Arrays.sort(results);
+//        String resultsStr = "";
+//        for (Integer die : results) {
+//            resultsStr += die.toString() +" ";
+//        }
+//        resultsText.setText(resultsStr);
+//
+//        return results;
+//    }
 
     public String rollExposure() {
         Random rand = new Random();

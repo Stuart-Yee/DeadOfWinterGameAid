@@ -77,12 +77,15 @@ public class PlayerListAdapter extends ArrayAdapter <Player> {
 
         // Get the data from the model class
         String dieResults = "";
-        for(Integer i: player.getDieResults()) {
-            dieResults += i.toString() + " ";
+        if (player.getDieResults() != null) {
+            for(Integer i: player.getDieResults()) {
+                dieResults += i.toString() + " ";
+            }
         }
 
+
         viewHolder.name.setText(player.getName());
-        viewHolder.dice.setText(player.getDice());
+        viewHolder.dice.setText(player.getDice().toString());
         viewHolder.results.setText(dieResults);
 
         return convertView;
